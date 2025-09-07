@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>BOHS Coding Club</title>
+  <!-- Favicon: add common sizes + cache-bust -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/FINAL_coding_club_logo.png?v=1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/FINAL_coding_club_logo.png?v=1" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/FINAL_coding_club_logo.png?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="home">
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="#home">
+        <img class="logo-img" src="assets/FINAL_coding_club_logo.png" alt="BOHS Coding Club logo" decoding="async" />
+        BOHS Coding Club
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">Menu</button>
+      <ul id="nav-menu" class="nav-menu" role="menubar">
+        <li role="none"><a role="menuitem" href="#about">About</a></li>
+        <li role="none"><a role="menuitem" href="#meetings">Meetings</a></li>
+        <li role="none"><a role="menuitem" href="#faqs">FAQs</a></li>
+      </ul>
+    </nav>
+
+    <!-- Inline SVG sprite for title icons (normalized, currentColor-driven) -->
+    <svg aria-hidden="true" width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden">
+      <symbol id="icon-code" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="12 6 6 12 12 18"></polyline>
+        <polyline points="20 6 26 12 20 18"></polyline>
+      </symbol>
+      <symbol id="icon-monitor" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="6" width="22" height="16" rx="2"></rect>
+        <path d="M12 26h8"></path>
+        <path d="M16 22v4"></path>
+      </symbol>
+      <symbol id="icon-bulb" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 6a8 8 0 0 1 6 13c-1.2 1.3-2 2.7-2 4H12c0-1.3-.8-2.7-2-4a8 8 0 0 1 6-13z"></path>
+        <path d="M13 25h6M14 28h4"></path>
+      </symbol>
+      <symbol id="icon-chevrons" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 12l4 4-4 4"></path>
+        <path d="M18 12l4 4-4 4"></path>
+      </symbol>
+      <symbol id="icon-gamepad" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="12" width="22" height="10" rx="5"></rect>
+        <path d="M12 17 h-3 M10.5 15.5 v3"></path>
+        <circle cx="22" cy="17" r="1.5"></circle>
+      </symbol>
+      <symbol id="icon-robot" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="10" width="20" height="14" rx="3"></rect>
+        <circle cx="13" cy="17" r="2"></circle>
+        <circle cx="19" cy="17" r="2"></circle>
+        <path d="M16 10 V6"></path>
+      </symbol>
+      <symbol id="icon-brackets" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 8 L6 14 L12 20"></path>
+        <path d="M20 8 L26 14 L20 20"></path>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 17l5 5 11-12"></path>
+      </symbol>
+    </svg>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <!-- Title wrap anchors icons tightly to the words -->
+        <div class="title-wrap">
+          <h1 id="hero-title" class="hero-title">
+            <span class="title-kicker">BOHS</span>
+            <span class="coding" style="color:#f52c7a;">Coding</span>
+            <span class="club"   style="color:#ec8a14;">Club</span>
+          </h1>
+
+          <!-- Decorative icons clustered around the title -->
+          <svg class="title-icon pink  lg"  data-pos="tl"  aria-hidden="true" role="presentation"><use href="#icon-code"></use></svg>
+          <svg class="title-icon teal  md"  data-pos="tr"  aria-hidden="true" role="presentation"><use href="#icon-monitor"></use></svg>
+          <svg class="title-icon orange md" data-pos="ml"  aria-hidden="true" role="presentation"><use href="#icon-bulb"></use></svg>
+          <svg class="title-icon pink  md"  data-pos="mr"  aria-hidden="true" role="presentation"><use href="#icon-chevrons"></use></svg>
+          <svg class="title-icon teal  lg"  data-pos="bl"  aria-hidden="true" role="presentation"><use href="#icon-gamepad"></use></svg>
+          <svg class="title-icon orange sm" data-pos="br"  aria-hidden="true" role="presentation"><use href="#icon-robot"></use></svg>
+        </div>
+        <p class="tagline">Learn to code, build projects, and have fun!</p>
+        
+      </div>
+      <!-- Sprinkled shapes behind title/buttons -->
+      <div class="shape-layer" aria-hidden="true"></div>
+      <div class="hero__glows" aria-hidden="true"></div>
+
+      
+    </section>
+  </header>
+
+  <!-- About: warm two-column section with glow, pills, and feature cards -->
+  <section id="about" class="section-about">
+    <div class="about-glow" aria-hidden="true"></div>
+
+    <div class="about-container">
+      <!-- LEFT: purpose -->
+      <div class="about-copy">
+        <h2 class="about-title">
+          <span class="t1" style="color:#f52c7a">What we’re about</span>
+          <span class="t2" style="color:#ec8a14">Why we code</span>
+        </h2>
+
+        <p class="about-lead">
+          We build apps that solve real problems, make games for fun and learning, prepare students for software engineering,
+          and strengthen friendships through coding.
+        </p>
+
+        <ul class="about-list">
+          <li><svg class="tick" aria-hidden="true" role="presentation"><use href="#icon-check"></use></svg> Real-world projects & campus tools</li>
+          <li><svg class="tick" aria-hidden="true" role="presentation"><use href="#icon-check"></use></svg> Game jams & playful experiments</li>
+          <li><svg class="tick" aria-hidden="true" role="presentation"><use href="#icon-check"></use></svg> Workshops for all levels (beginners welcome)</li>
+          <li><svg class="tick" aria-hidden="true" role="presentation"><use href="#icon-check"></use></svg> Teamwork, demos, and feedback</li>
+        </ul>
+
+        <div class="about-pills">
+          <span class="pill pink">Apps</span>
+          <span class="pill orange">Games</span>
+          <span class="pill teal">AI</span>
+          <span class="pill">Community</span>
+        </div>
+
+        <div class="about-facts" aria-label="Quick facts">
+          <div class="fact">
+            <div class="fact-k">2.5+ GPA</div>
+            <div class="fact-l">Eligibility</div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">At least 1/mo</div>
+            <div class="fact-l">Meetings</div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">Everyone</div>
+            <div class="fact-l">Beginners Welcome</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: feature cards -->
+      <div class="about-cards">
+        <article class="feature">
+          <div class="feature-icon pink"><svg aria-hidden="true" role="presentation"><use href="#icon-monitor"></use></svg></div>
+          <h3>Build Apps</h3>
+          <p>Ship useful tools for students and staff—design, code, and iterate together.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon orange"><svg aria-hidden="true" role="presentation"><use href="#icon-gamepad"></use></svg></div>
+          <h3>Make Games</h3>
+          <p>From tiny arcade prototypes to learning games—creativity first, polish later.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon teal"><svg aria-hidden="true" role="presentation"><use href="#icon-robot"></use></svg></div>
+          <h3>Explore AI</h3>
+          <p>Try modern tools, build small AI features, and learn practical workflows.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    
+
+    <section id="eligibility" class="elig">
+      <div class="elig__wrap">
+        <!-- LEFT: playful timeline (decorative) -->
+        <div class="elig__side" aria-hidden="true">
+          <div class="elig-timeline">
+            <span class="elig-tl-line"></span>
+
+            <!-- Icons along the rail; decorative only -->
+            <svg class="elig-tl-icon teal"   style="top:10%"><use href="#icon-robot"></use></svg>
+            <svg class="elig-tl-icon orange" style="top:35%"><use href="#icon-gamepad"></use></svg>
+            <svg class="elig-tl-icon pink"   style="top:60%"><use href="#icon-bulb"></use></svg>
+            <svg class="elig-tl-icon teal"   style="top:85%"><use href="#icon-brackets"></use></svg>
+          </div>
+          <!-- subtle floating shapes (left of the rail) -->
+          <div class="elig-shapes" aria-hidden="true"></div>
+        </div>
+
+        <!-- RIGHT: content column -->
+        <div class="elig__panel">
+          <h2 class="elig__title">
+            <span style="color:#f52c7a">Eligibility</span>
+            <span style="color:#ec8a14">What you need</span>
+          </h2>
+
+          <div class="elig__grid">
+            <article class="elig-card elig-card--left">
+              <div class="elig-card__icon">💻</div>
+              <h3>Device access</h3>
+              <p>Have a laptop/computer that can run/edit code.</p>
+            </article>
+
+            <article class="elig-card elig-card--left">
+              <div class="elig-card__icon">🎓</div>
+              <h3>2.5+ GPA</h3>
+              <p>Maintain at least a 2.5 overall unweighted GPA.</p>
+            </article>
+
+            <article class="elig-card elig-card--left">
+              <div class="elig-card__icon">📅</div>
+              <h3>Meetings</h3>
+              <p>Attend at least 1 meeting per month.</p>
+            </article>
+
+            <article class="elig-card elig-card--left">
+              <div class="elig-card__icon">🚀</div>
+              <h3>Commitment</h3>
+              <p>Be dedicated enough to work outside of school.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="meetings" class="meetings section-meet">
+      <div class="meet-wrap">
+        <header class="meet-head">
+          <h2 class="meet-title">
+            <span class="t1" style="color:#f52c7a">Meetings</span>
+            <span class="t2" style="color:#ec8a14">When we meet</span>
+          </h2>
+          <p class="meet-sub">First &amp; third Friday each month • Room 221 • 3:15–4:15 PM</p>
+        </header>
+
+    <div class="meet-grid">
+      <!-- LEFT: primary/hero card -->
+      <div class="meet-hero">
+        <article class="meet-card meet-card--primary" aria-label="Next meeting">
+          <div class="meet-card__top">
+            <div class="meet-date">
+              <div class="meet-date__month">—</div>
+              <div class="meet-date__day">—</div>
+            </div>
+            <div class="meet-meta">
+              <h3 class="meet-h3">Next Meeting</h3>
+              <div class="meet-time">3:15–4:15 PM</div>
+              <div class="meet-room">Room 221</div>
+            </div>
+          </div>
+          <ul class="meet-list">
+            <li>Mini-workshop + progress shares</li>
+            <li>Project/club updates and Q&amp;A</li>
+          </ul>
+          <div class="meet-cta">
+            <a class="btn btn-primary" href="#" id="meet-add">Add to Calendar</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- RIGHT: stacked small cards -->
+      <div class="meet-side">
+        <article class="meet-card">
+          <h3 class="meet-h3">What to expect</h3>
+          <p>Short demo or lesson, hands-on time, and friendly feedback.</p>
+        </article>
+
+        <article class="meet-card">
+          <h3 class="meet-h3">Bring this</h3>
+          <p>Laptop (if you have one), curiosity, and any project ideas.</p>
+        </article>
+      </div>
+    </div>
+      </div>
+      <div class="meet-glow" aria-hidden="true"></div>
+    </section>
+
+    <section id="officers" class="officers">
+      <div class="officers__inner">
+      <h2 class="officers__title">
+        <span class="t1" style="color:var(--pink)">Officers</span>
+        <span class="t2" style="color:var(--orange)">&amp; Advisor</span>
+      </h2>
+      <div class="officers-grid">
+        <article class="officer-card is-president">
+          <figure class="officer-figure">
+            <img class="officer-photo" src="" alt="Portrait of Abraham Baltodano, President" loading="lazy" decoding="async">
+            <span class="officer-placeholder is-pink" aria-hidden="true">AB</span>
+            <figcaption class="officer-meta">
+              <h3 class="officer-name">Abraham Baltodano</h3>
+              <p class="officer-role">President</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="officer-card">
+          <figure class="officer-figure">
+            <img class="officer-photo" src="" alt="Portrait of Jake Bryant, Co-Vice President" loading="lazy" decoding="async">
+            <span class="officer-placeholder is-orange" aria-hidden="true">JB</span>
+            <figcaption class="officer-meta">
+              <h3 class="officer-name">Jake Bryant</h3>
+              <p class="officer-role">Co-Vice President</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="officer-card">
+          <figure class="officer-figure">
+            <img class="officer-photo" src="" alt="Portrait of Caleb Ibarra, Co-Vice President" loading="lazy" decoding="async">
+            <span class="officer-placeholder is-teal" aria-hidden="true">CI</span>
+            <figcaption class="officer-meta">
+              <h3 class="officer-name">Caleb Ibarra</h3>
+              <p class="officer-role">Co-Vice President</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="officer-card">
+          <figure class="officer-figure">
+            <img class="officer-photo" src="" alt="Portrait of Bradley Espinoza, Treasurer" loading="lazy" decoding="async">
+            <span class="officer-placeholder is-teal" aria-hidden="true">BE</span>
+            <figcaption class="officer-meta">
+              <h3 class="officer-name">Bradley Espinoza</h3>
+              <p class="officer-role">Treasurer</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="officer-card">
+          <figure class="officer-figure">
+            <img class="officer-photo" src="" alt="Portrait of Aaron Nguyen, Social Media Coordinator" loading="lazy" decoding="async">
+            <span class="officer-placeholder is-pink" aria-hidden="true">AN</span>
+            <figcaption class="officer-meta">
+              <h3 class="officer-name">Aaron Nguyen</h3>
+              <p class="officer-role">Social Media Coordinator</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="officer-card">
+          <figure class="officer-figure">
+            <img class="officer-photo" src="" alt="Portrait of Kyle Franks, Co-Secretary" loading="lazy" decoding="async">
+            <span class="officer-placeholder is-pink" aria-hidden="true">KF</span>
+            <figcaption class="officer-meta">
+              <h3 class="officer-name">Kyle Franks</h3>
+              <p class="officer-role">Co-Secretary</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="officer-card">
+          <figure class="officer-figure">
+            <img class="officer-photo" src="" alt="Portrait of Evan Modica, Co-Secretary" loading="lazy" decoding="async">
+            <span class="officer-placeholder is-orange" aria-hidden="true">EM</span>
+            <figcaption class="officer-meta">
+              <h3 class="officer-name">Evan Modica</h3>
+              <p class="officer-role">Co-Secretary</p>
+            </figcaption>
+          </figure>
+        </article>
+      </div>
+      </div>
+    </section>
+
+    <section id="faqs" class="faqs">
+      <div class="faqs__inner">
+      <h2>FAQs</h2>
+      <div class="accordion">
+        <details>
+          <summary><span class="faq-chevron" aria-hidden="true"></span>Who can join?</summary>
+          <div class="faq__answer"><div class="faq__inner">
+            <p>Any BOHS student who meets the eligibility requirements.</p>
+          </div></div>
+        </details>
+        <details>
+          <summary><span class="faq-chevron" aria-hidden="true"></span>Do I need experience?</summary>
+          <div class="faq__answer"><div class="faq__inner">
+            <p>No—beginners welcome! We’ll help you get started.</p>
+          </div></div>
+        </details>
+        <details>
+          <summary><span class="faq-chevron" aria-hidden="true"></span>What do we build?</summary>
+          <div class="faq__answer"><div class="faq__inner">
+            <p>Apps, games, and real-world projects that help our community.</p>
+          </div></div>
+        </details>
+        <details>
+          <summary><span class="faq-chevron" aria-hidden="true"></span>Time commitment?</summary>
+          <div class="faq__answer"><div class="faq__inner">
+            <p>Monthly meetings plus optional project sessions and hack nights.</p>
+          </div></div>
+        </details>
+        <details>
+          <summary><span class="faq-chevron" aria-hidden="true"></span>How do I join?</summary>
+          <div class="faq__answer"><div class="faq__inner">
+            <p>Fill out the form above and come to our next meeting.</p>
+          </div></div>
+        </details>
+      </div>
+      </div>
+    </section>
+  </main>
+ 
+  <footer class="footer">
+    <div class="footer__inner">
+      <p>© <span class="year"></span> BOHS Coding Club • Brea Olinda High School</p>
+      <p><a href="mailto:club@example.com">400000407@mybousd.us</a></p>
+      <p class="socials">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <span aria-hidden="true">•</span>
+        <a href="#" aria-label="GitHub">Discord</a>
+      </p>
+      <p class="small-print">Student-run club. This site collects no personal data.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>document.querySelector('.year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
