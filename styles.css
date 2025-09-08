@@ -125,7 +125,7 @@ p{margin:0 0 10px}
 .nav{position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px); background:rgba(10,13,22,.65); border-bottom:1px solid #ffffff12; display:flex; align-items:center; gap:16px; padding:12px 20px; z-index:100}
 .nav a{color:var(--text)}
 .logo{display:flex; align-items:center; gap:10px; font-weight:400; text-decoration:none}
-.logo-img{ width:36px; height:36px; border-radius:8px; display:block; object-fit:contain; }
+.logo-img{ width:28px; height:28px; border-radius:8px; display:block; object-fit:contain; }
 .logo-mark{display:inline-grid; place-items:center; margin-right:10px; width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--purple), var(--pink)); color:#111; font-weight:400; font-family:"Fredoka", system-ui; box-shadow:0 6px 20px rgba(255,79,216,.25)}
 .nav-toggle{margin-left:auto; background:none; color:var(--text); border:1px solid #ffffff30; padding:8px 12px; border-radius:10px}
 .nav-toggle:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
@@ -135,6 +135,39 @@ p{margin:0 0 10px}
 @media (min-width: 780px){
   .nav-toggle{display:none}
   .nav-menu{display:flex; margin-left:auto; flex-direction:row; align-items:center}
+}
+
+/* Mobile dropdown nav (<=768px) */
+@media (max-width: 768px){
+  /* Turn the menu into an absolute dropdown under the sticky nav */
+  .nav{ position: sticky; top: 0; z-index: 1000; overflow: visible; }
+  .nav-menu{
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    display: block; /* override desktop hide; we'll animate height */
+    background: #0b0b1a;
+    border-top: 1px solid #ffffff12;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height .28s ease, opacity .25s ease, transform .25s ease;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  }
+  .nav-menu.open{
+    max-height: 60vh; /* large enough for all links */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    z-index: 1100;
+  }
+  .nav-menu li{ display: block; border-bottom: 1px solid #ffffff12; }
+  .nav-menu li:last-child{ border-bottom: 0; }
+  .nav-menu a{
+    display: block;
+    padding: 14px 20px;
+    color: #fff;
+  }
 }
 
 /* Hero */
@@ -303,6 +336,58 @@ p{margin:0 0 10px}
 @media (max-width: 768px){
   .shape{ width: calc(var(--sz) * .85); height: calc(var(--sz) * .85); }
   .shape.pill{ width: calc(var(--sz) * 1.5); }
+}
+
+/* ============================= */
+/* Mobile refinements (<768px)   */
+/* ============================= */
+@media (max-width: 768px){
+  /* Center brand and tame size */
+  .logo{ margin: 0 auto; }
+  .logo-img{ width:32px; height:32px; }
+
+  /* Nav spacing and smaller toggle */
+  .nav{ padding: 10px 16px; }
+  .nav-toggle{ padding: 6px 10px; font-size: 14px; }
+  .nav-menu a{ padding: 10px 12px; }
+
+  /* Hero breathing room and readability */
+  .hero{ padding-top: calc(var(--nav-h) + 24px); padding-bottom: 64px; }
+  /* Make hero title larger on mobile only (scaled up proportionally) */
+  .hero h1{ font-size: clamp(72px, 18vw, 180px); }
+  /* Two-line mobile tagline (keeps desktop one-line intact) */
+  .hero .tagline{
+    position: relative;
+    color: transparent; /* hide original text only on mobile */
+    line-height: 1.35;
+    margin: 16px auto 40px;
+    max-width: 36ch;
+  }
+  .hero .tagline::before{
+    content: "Learn to code\a Build projects, and have fun!";
+    white-space: pre; /* honor line break */
+    color: #ffffff;
+    display: block;
+    /* Scaled up proportionally with the title */
+    font-size: clamp(20px, 3.8vw, 24px);
+    text-align: center;
+  }
+  /* Keep default hero typography; no mobile-only overrides */
+
+  /* Reduce floating shapes to avoid clutter */
+  .hero .shape-layer .shape:nth-child(n+11){ display:none; }
+}
+
+/* Very small phones (<=375px) */
+@media (max-width: 375px){
+  .nav{ padding: 8px 12px; }
+  .nav-toggle{ padding: 5px 9px; font-size: 13px; }
+  .logo-img{ width:30px; height:30px; }
+  .hero{ padding-top: calc(var(--nav-h) + 18px); padding-bottom: 56px; }
+  .hero h1{ font-size: clamp(64px, 20vw, 168px); }
+  .hero .tagline{ margin: 14px auto 30px; }
+  .hero .tagline::before{ font-size: clamp(18px, 5vw, 22px); }
+  .hero .shape-layer .shape:nth-child(n+9){ display:none; }
 }
 
 /* Base animation hooks (variables set per-shape) */
