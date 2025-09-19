@@ -491,5 +491,52 @@
 
   <script src="script.js"></script>
   <script>document.querySelector('.year').textContent = new Date().getFullYear();</script>
+  <script>
+    (function(){
+      const MONTH_EL = document.querySelector('.meet-date__month');
+      const DAY_EL = document.querySelector('.meet-date__day');
+      const CAL_LINK = document.getElementById('meet-add');
+      if (!MONTH_EL || !DAY_EL || !CAL_LINK) return;
+
+      const MEETINGS = [
+        '2025-09-19', '2025-10-03', '2025-10-17',
+        '2025-11-07', '2025-11-21', '2025-12-05', '2025-12-19',
+        '2026-01-02', '2026-01-16', '2026-02-06', '2026-02-20',
+        '2026-03-06', '2026-03-20', '2026-04-03', '2026-04-17',
+        '2026-05-01', '2026-05-15'
+      ].map(date => new Date(`${date}T12:00:00`));
+
+      const now = new Date();
+      const next = MEETINGS.find(d => d >= now);
+      if (!next) return;
+
+      const month = next.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+      MONTH_EL.textContent = month;
+      DAY_EL.textContent = String(next.getDate());
+
+      const formatCalendarStamp = (date) => {
+        const pad = (n) => String(n).padStart(2, '0');
+        return (
+          date.getUTCFullYear() +
+          pad(date.getUTCMonth() + 1) +
+          pad(date.getUTCDate()) + 'T' +
+          pad(date.getUTCHours()) +
+          pad(date.getUTCMinutes()) +
+          pad(date.getUTCSeconds()) + 'Z'
+        );
+      };
+
+      const start = new Date(next.getTime());
+      const end = new Date(start.getTime() + 60 * 60 * 1000);
+      const calendarURL = new URL('https://calendar.google.com/calendar/render');
+      calendarURL.searchParams.set('action', 'TEMPLATE');
+      calendarURL.searchParams.set('text', 'BOHS Coding Club Meeting');
+      calendarURL.searchParams.set('details', 'BOHS Coding Club meeting at lunch in Room 104');
+      calendarURL.searchParams.set('location', 'Brea Olinda High School Room 104');
+      calendarURL.searchParams.set('dates', `${formatCalendarStamp(start)}/${formatCalendarStamp(end)}`);
+
+      CAL_LINK.href = calendarURL.toString();
+    })();
+  </script>
 </body>
 </html>
