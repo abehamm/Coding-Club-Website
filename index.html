@@ -224,6 +224,8 @@
       </div>
     </section>
 
+    
+
     <section id="meetings" class="meetings section-meet">
       <div class="meet-wrap">
         <header class="meet-head">
@@ -231,7 +233,7 @@
             <span class="t1" style="color:#f52c7a">Meetings</span>
             <span class="t2" style="color:#ec8a14">When we meet</span>
           </h2>
-          <p class="meet-sub">First &amp; third Friday each month • Room 221 • 3:15–4:15 PM</p>
+          <p class="meet-sub">First &amp; third Friday each month • Room 104 • At Lunch</p>
         </header>
 
     <div class="meet-grid">
@@ -245,8 +247,8 @@
             </div>
             <div class="meet-meta">
               <h3 class="meet-h3">Next Meeting</h3>
-              <div class="meet-time">3:15–4:15 PM</div>
-              <div class="meet-room">Room 221</div>
+              <div class="meet-time">At Lunch</div>
+              <div class="meet-room">Room 104</div>
             </div>
           </div>
           <ul class="meet-list">
@@ -280,12 +282,11 @@
       <div class="officers__inner">
       <h2 class="officers__title">
         <span class="t1" style="color:var(--pink)">Officers</span>
-        <span class="t2" style="color:var(--orange)">&amp; Advisor</span>
       </h2>
       <div class="officers-grid">
         <article class="officer-card is-president">
           <figure class="officer-figure">
-            <img class="officer-photo" src="" alt="Portrait of Abraham Baltodano, President" loading="lazy" decoding="async">
+            <img class="officer-photo" src="assets/Club%20Board/abe.png" alt="Portrait of Abraham Baltodano, President" loading="lazy" decoding="async">
             <span class="officer-placeholder is-pink" aria-hidden="true">AB</span>
             <figcaption class="officer-meta">
               <h3 class="officer-name">Abraham Baltodano</h3>
@@ -296,7 +297,7 @@
 
         <article class="officer-card">
           <figure class="officer-figure">
-            <img class="officer-photo" src="" alt="Portrait of Jake Bryant, Co-Vice President" loading="lazy" decoding="async">
+            <img class="officer-photo" src="assets/Club%20Board/jake.png" alt="Portrait of Jake Bryant, Co-Vice President" loading="lazy" decoding="async">
             <span class="officer-placeholder is-orange" aria-hidden="true">JB</span>
             <figcaption class="officer-meta">
               <h3 class="officer-name">Jake Bryant</h3>
@@ -307,7 +308,7 @@
 
         <article class="officer-card">
           <figure class="officer-figure">
-            <img class="officer-photo" src="" alt="Portrait of Caleb Ibarra, Co-Vice President" loading="lazy" decoding="async">
+            <img class="officer-photo" src="assets/Club%20Board/caleb.png" alt="Portrait of Caleb Ibarra, Co-Vice President" loading="lazy" decoding="async">
             <span class="officer-placeholder is-teal" aria-hidden="true">CI</span>
             <figcaption class="officer-meta">
               <h3 class="officer-name">Caleb Ibarra</h3>
@@ -318,7 +319,7 @@
 
         <article class="officer-card">
           <figure class="officer-figure">
-            <img class="officer-photo" src="" alt="Portrait of Bradley Espinoza, Treasurer" loading="lazy" decoding="async">
+            <img class="officer-photo" src="assets/Club%20Board/bradley.png" alt="Portrait of Bradley Espinoza, Treasurer" loading="lazy" decoding="async">
             <span class="officer-placeholder is-teal" aria-hidden="true">BE</span>
             <figcaption class="officer-meta">
               <h3 class="officer-name">Bradley Espinoza</h3>
@@ -329,7 +330,7 @@
 
         <article class="officer-card">
           <figure class="officer-figure">
-            <img class="officer-photo" src="" alt="Portrait of Aaron Nguyen, Social Media Coordinator" loading="lazy" decoding="async">
+            <img class="officer-photo" src="assets/Club%20Board/aaron.png" alt="Portrait of Aaron Nguyen, Social Media Coordinator" loading="lazy" decoding="async">
             <span class="officer-placeholder is-pink" aria-hidden="true">AN</span>
             <figcaption class="officer-meta">
               <h3 class="officer-name">Aaron Nguyen</h3>
@@ -340,7 +341,7 @@
 
         <article class="officer-card">
           <figure class="officer-figure">
-            <img class="officer-photo" src="" alt="Portrait of Kyle Franks, Co-Secretary" loading="lazy" decoding="async">
+            <img class="officer-photo" src="assets/Club%20Board/kyle_franks.png" alt="Portrait of Kyle Franks, Co-Secretary" loading="lazy" decoding="async">
             <span class="officer-placeholder is-pink" aria-hidden="true">KF</span>
             <figcaption class="officer-meta">
               <h3 class="officer-name">Kyle Franks</h3>
@@ -351,7 +352,7 @@
 
         <article class="officer-card">
           <figure class="officer-figure">
-            <img class="officer-photo" src="" alt="Portrait of Evan Modica, Co-Secretary" loading="lazy" decoding="async">
+            <img class="officer-photo" src="assets/Club%20Board/evan_modica.png" alt="Portrait of Evan Modica, Co-Secretary" loading="lazy" decoding="async">
             <span class="officer-placeholder is-orange" aria-hidden="true">EM</span>
             <figcaption class="officer-meta">
               <h3 class="officer-name">Evan Modica</h3>
@@ -362,7 +363,80 @@
       </div>
       </div>
     </section>
+    <section id="join-us" class="join-us" aria-labelledby="join-us-title">
 
+      <header class="join-us__head">
+        <h2 id="join-us-title" class="join-us__title">
+          <span style="color:#f52c7a">Join</span>
+          <span style="color:#ec8a14">Us</span>
+        </h2>
+        <p class="join-us__sub">Tell us a bit about you—we’ll reach out with meeting details.</p>
+      </header>
+
+      <form id="join-us-form" class="join-us__card" novalidate action="https://script.google.com/macros/s/AKfycbzmpq1mIdGGQGzdsgu6FgezH2RpZZE-0RczieKGJtvjM2LfGaqzLiGyDD4xS4c7jq7y/exec" method="POST" target="join-us-transport">
+        <div class="join-us__grid">
+          <label>Full Name
+            <input name="name" autocomplete="name" required />
+          </label>
+
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+
+          <label>Phone (optional)
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+
+          <label>Grade
+            <select name="grade" required>
+              <option value="">Select</option>
+              <option>9</option><option>10</option><option>11</option><option>12</option>
+            </select>
+          </label>
+
+          <label>Experience
+            <select name="experience" required>
+              <option value="">Select</option>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+          </label>
+
+          <fieldset class="join-us__interests">
+            <legend>Interests</legend>
+            <div class="interests-grid">
+              <label class="interest-option">
+                <input type="checkbox" name="interests" value="Web" />
+                <span>Web</span>
+              </label>
+              <label class="interest-option">
+                <input type="checkbox" name="interests" value="Games" />
+                <span>Games</span>
+              </label>
+              <label class="interest-option">
+                <input type="checkbox" name="interests" value="Automation" />
+                <span>Automation</span>
+              </label>
+              <label class="interest-option">
+                <input type="checkbox" name="interests" value="Design/UX" />
+                <span>Design/UX</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="join-us__full">Message (optional)
+            <textarea name="message" rows="4" placeholder="Anything you want us to know?"></textarea>
+          </label>
+        </div>
+
+      <div class="join-us__actions">
+          <button class="btn btn-primary" type="submit">Submit</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <iframe id="join-us-transport" name="join-us-transport" hidden></iframe>
+    </section>
     <section id="faqs" class="faqs">
       <div class="faqs__inner">
       <h2>FAQs</h2>
@@ -407,9 +481,9 @@
       <p>© <span class="year"></span> BOHS Coding Club • Brea Olinda High School</p>
       <p><a href="mailto:club@example.com">400000407@mybousd.us</a></p>
       <p class="socials">
-        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="https://www.instagram.com/bohs.coding_club/" aria-label="Instagram">Instagram</a>
         <span aria-hidden="true">•</span>
-        <a href="#" aria-label="GitHub">Discord</a>
+        <a href="https://discord.gg/kT7DrSJeGe" aria-label="GitHub">Discord</a>
       </p>
       <p class="small-print">Student-run club. This site collects no personal data.</p>
     </div>

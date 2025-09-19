@@ -318,6 +318,7 @@ document.body.addEventListener('keydown', (e) => {
     ['eligibility', 'section-eligibility-active'],
     ['meetings',    'section-meetings-active'],
     ['officers',    'section-officers-active'],
+    ['join-us',     'section-join-us-active'],
     ['faqs',        'section-faqs-active'],
   ];
   if (!('IntersectionObserver' in window)) return;
@@ -331,4 +332,48 @@ document.body.addEventListener('keydown', (e) => {
     });
   }, { rootMargin: '0px 0px -25% 0px', threshold: 0.5 });
   map.forEach(([id]) => { const el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+
+// Join Us form submission (minimal JSON POST)
+(function(){
+  const form = document.querySelector('#join-us-form');
+  const status = form?.querySelector('.form-status');
+  // Google Apps Script Web App endpoint (can be overridden by setting window.JOIN_ENDPOINT)
+  const JOIN_ENDPOINT = window.JOIN_ENDPOINT || 'https://script.google.com/macros/s/AKfycbxxo2G9Du-eIhG-Mo5h-rlgH1U8QO3ItaVBKE4OZWFbyQbhzjIz3PzSMuOjBrZEJNWX/exec';
+  if (!form || !status) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    if (!form.checkValidity()){
+      status.textContent = 'Please fill in the required fields.';
+      const firstInvalid = form.querySelector(':invalid');
+      firstInvalid?.focus();
+      return;
+    }
+    
+  const fd = new FormData(form);
+  // (optional) remove interests if not checked
+  (fd.getAll('interests').length === 0) && fd.delete('interests');
+
+    try {
+      if (!JOIN_ENDPOINT) {
+        // Endpoint not configured yet; mimic success for now
+        status.textContent = 'Thanks! We’ll be in touch soon.';
+        form.reset();
+        return;
+      }
+      const res = await fetch(JOIN_ENDPOINT, {
+        method: 'POST',
+        body: fd,
+        //mode: 'no-cors', // no-cors to avoid preflight; can’t read response but at least sends
+      });
+      // If you use no-cors, always assume success here because you can’t read res.ok
+      status.textContent = 'Thanks! We’ll be in touch soon.';
+      form.reset();
+    } catch(err) {
+      status.textContent = 'Something went wrong. Please try again later.';
+      console.error('Join Us submit error:', err);
+    }
+  });
 })();

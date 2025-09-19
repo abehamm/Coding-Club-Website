@@ -101,6 +101,8 @@ body.section-faqs-active{
   --g2-x: 78%; --g2-y: 36%; --g2-color: var(--glow-orange);
   --g3-x: 84%; --g3-y: 16%; --g3-color: var(--glow-teal);
 }
+/* Suppress global glows when Join Us is active */
+body.section-join-us-active::before{ opacity: 0; }
 /* legacy per-section glow utilities removed in favor of body::before */
 h1,h2,h3{line-height:1.15; margin:0 0 12px; font-family: "Fredoka", system-ui}
 h1{font-size: clamp(2rem, 5vw, 3.25rem); font-weight:400}
@@ -524,7 +526,7 @@ legend{padding:0 2px; color:var(--muted)}
 .faqs{
   position: relative; isolation: isolate;
   padding: clamp(56px, 8vw, 88px) 0;
-  background: linear-gradient(180deg, var(--deep-2), var(--deep));
+  background: linear-gradient(180deg, var(--deep), var(--deep-2));
   overflow: hidden;
   /* faint backdrop glows to avoid muddying body text */
   --g1-x:22%; --g1-y:28%; --g1-w:36vw; --g1-h:26vw; --g1-color: var(--glow-pink);
@@ -651,7 +653,7 @@ legend{padding:0 2px; color:var(--muted)}
 }
 
 /* Footer */
-.footer{padding:40px 20px; text-align:center; color:var(--muted); background: linear-gradient(180deg, var(--deep), var(--deep-2));}
+.footer{padding:40px 20px; text-align:center; color:var(--muted); background: linear-gradient(180deg, var(--deep-2), var(--deep));}
 .footer{ position: relative; isolation: isolate; }
 .footer a{color:var(--text)}
 .footer__inner{max-width:1100px; margin:0 auto}
@@ -661,6 +663,130 @@ legend{padding:0 2px; color:var(--muted)}
 /* ============================= */
 /* Officers board                */
 /* ============================= */
+.join-us{ position: relative; isolation: isolate; padding: clamp(56px, 8vw, 88px) 0; background: linear-gradient(180deg, var(--deep-2), var(--deep)) !important; overflow:hidden; }
+.join-us__head{ max-width:1100px; margin:0 auto clamp(20px, 2vw, 28px); padding:0 20px; position:relative; z-index:1; }
+.join-us__title{ font-family:"Fredoka", system-ui, sans-serif; font-weight:800; line-height:1; display:grid; gap:.25rem; font-size:clamp(28px, 4vw, 42px); }
+.join-us__sub{ color: var(--muted); margin-top:.5rem; }
+
+.join-us__card{ position:relative; z-index:1; max-width:1100px; margin:0 auto; background: linear-gradient(180deg, var(--card-bg-1), var(--card-bg-2)); border:1px solid #ffffff1a; border-radius: var(--cardCurve); padding: clamp(16px, 2.2vw, 22px); box-shadow: 0 6px 20px #00000025 inset, 0 6px 24px #00000020; transition: box-shadow .4s ease; }
+.join-us__card::before{ content:""; position:absolute; inset:0; border-radius:inherit; padding: var(--borderThickness); background: linear-gradient(90deg, var(--pink), var(--orange)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite: exclude; opacity: 0; transition: opacity .35s ease; pointer-events:none; }
+.join-us__card:hover::before{ opacity: 1; }
+
+.join-us__grid{ display:grid; grid-template-columns: 1fr; gap: clamp(12px, 2vw, 16px); }
+@media (min-width: 900px){ .join-us__grid{ grid-template-columns: repeat(2, 1fr); } .join-us__full{ grid-column: 1 / -1; } }
+
+.join-us__interests{
+  margin: 0;
+  padding: clamp(14px, 2vw, 18px) clamp(16px, 2vw, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--cardCurve);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.join-us__interests legend{
+  color: var(--orange);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 1.5vw, 1rem);
+  letter-spacing: 0.01em;
+  margin: 0;
+  padding: 0 0.5rem;
+}
+.join-us__interests .interests-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 48px;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
+}
+.join-us__interests .interest-option{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  justify-items: start;
+  gap: 14px;
+  padding: 12px 16px;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease, transform 120ms ease;
+}
+.join-us__interests .interest-option span{
+  display: flex;
+  align-items: center;
+}
+.join-us__interests input[type="checkbox"]{
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  accent-color: var(--pink);
+  margin: 0;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.join-us__interests input[type="checkbox"]:focus-visible{
+  outline: none;
+}
+.join-us__interests .interest-option:hover{
+  background: rgba(255, 255, 255, 0.07);
+  border-color: color-mix(in srgb, var(--pink) 55%, transparent);
+}
+.join-us__interests .interest-option:active{
+  transform: translateY(1px);
+}
+.join-us__interests .interest-option:focus-within{
+  border-color: color-mix(in srgb, var(--teal) 60%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 24%, transparent);
+}
+.join-us__interests input[type="checkbox"]:checked{
+  border-color: color-mix(in srgb, var(--orange) 55%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--orange) 20%, transparent);
+}
+.join-us__interests input[type="checkbox"]:checked + span{
+  color: color-mix(in srgb, var(--orange) 85%, #ffffff);
+}
+@media (max-width: 900px){
+  .join-us__interests{
+    padding: 16px;
+  }
+}
+@media (max-width: 767px){
+  .join-us__interests .interests-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 767px){
+  .officers .officer-photo{
+    aspect-ratio: 3 / 4;
+    object-position: center 18%;
+    max-height: clamp(200px, 80vw, 260px);
+  }
+  .officers .officer-placeholder{
+    aspect-ratio: 3 / 4;
+    max-height: clamp(200px, 80vw, 260px);
+  }
+}
+
+.join-us input,
+.join-us select,
+.join-us textarea{ width:100%; background: rgba(255,255,255,.04); color:#e6edf3; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:.85rem 1rem; outline:none; transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease; }
+.join-us input:focus,
+.join-us select:focus,
+.join-us textarea:focus{ border-color: color-mix(in srgb, var(--orange) 60%, transparent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--orange) 18%, transparent); }
+
+.join-us__actions{ display:flex; gap:12px; align-items:center; margin-top: 14px; }
+.join-us{background: linear-gradient(180deg, var(--deep-2), var(--deep)) !important;}
 .officers{
   position: relative; isolation: isolate;
   /* full-bleed like meetings */
@@ -692,9 +818,19 @@ legend{padding:0 2px; color:var(--muted)}
   .officers-grid{ grid-template-columns: 1fr; }
 }
 
+@media (max-width: 600px){
+  .officers-grid{
+    justify-items: center;
+  }
+  .officers .officer-card{
+    width: clamp(200px, 72vw, 260px);
+    min-height: clamp(360px, 130vw, 460px);
+  }
+}
+
 /* Highlight President on wide desktop only (span 2 columns) */
 @media (min-width: 1201px){
-  .officers .officer-card.is-president{ grid-column: span 2; }
+  .officers .officer-card.is-president{ grid-column: span 1; }
 }
 .officers .officer-card{
   position: relative;
@@ -726,13 +862,13 @@ legend{padding:0 2px; color:var(--muted)}
 .officers .officer-figure{ display:flex; flex-direction:column; gap:12px; margin:0; }
 .officers .officer-photo{
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 5 / 6;
   object-fit: cover;
   border-radius: 18px;
   background: #0b0f14;
   border: 4px solid #ffffff1a;
   display: block;
-  max-height: clamp(140px, 22vw, 180px);
+  max-height: clamp(160px, 24vw, 220px);
 }
 /* Hide image if no src; show placeholder instead */
 .officers .officer-photo[src=""],
@@ -741,14 +877,14 @@ legend{padding:0 2px; color:var(--muted)}
   display:none; /* toggled on when img is empty */
   place-items:center;
   width:100%;
-  aspect-ratio:1 / 1;
+  aspect-ratio:5 / 6;
   border-radius:18px;
   background:#0b0f14;
   border:4px solid #ffffff1a;
   font-weight:800;
   font-size: clamp(28px, 4vw, 40px);
   letter-spacing:.02em;
-  max-height: clamp(140px, 22vw, 180px);
+  max-height: clamp(160px, 24vw, 220px);
 }
 .officers .officer-photo[src=""] + .officer-placeholder,
 .officers .officer-photo:not([src]) + .officer-placeholder{ display:grid; }
@@ -809,6 +945,8 @@ legend{padding:0 2px; color:var(--muted)}
     background-blend-mode: normal, normal, normal, normal;
   }
 }
+
+
 
 /* ============================= */
 /* Eligibility (revamped)        */
